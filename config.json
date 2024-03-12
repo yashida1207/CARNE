@@ -1,0 +1,58 @@
+{
+    "use_wc": false,
+    "use_ls": true, 
+    
+    "WC": 
+        {
+            "volume": 187.0, 
+            "livetime": 10.0, 
+            "atmo_nu_cc": 
+                {
+                    "scale_syst": 20, 
+                    "shift_syst": 3,  
+                    "smear_syst": 10 
+                },  
+            "atmo_nu_nc": 
+                {
+                    "scale_syst": 20,  
+                    "shift_syst": 3,  
+                    "smear_syst": 10
+                },  
+            "spall": 
+                {
+                    "scale_syst": 20, 
+                    "shift_syst": 3,  
+                    "smear_syst": 10
+                }  
+        }, 
+
+    "LS": 
+        {
+            "volume": 14.7, 
+            "livetime": 10.0, 
+            "atmo_nu_cc": 
+                {
+                    "scale_syst": 20, 
+                    "shift_syst": 3,  
+                    "smear_syst": 10 
+                },  
+            "atmo_nu_nc_11C": 
+                {
+                    "scale_syst": 20,  
+                    "shift_syst": 3,  
+                    "smear_syst": 10
+                },  
+            "atmo_nu_nc_others": 
+                {
+                    "scale_syst": 20, 
+                    "shift_syst": 3,  
+                    "smear_syst": 10
+                },  
+            "fastn": 
+                {
+                    "scale_syst": 20, 
+                    "shift_syst": 3,  
+                    "smear_syst": 10
+                }  
+        }
+}
