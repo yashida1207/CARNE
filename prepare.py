@@ -128,9 +128,9 @@ def load_bkg_ls(volume, livetime, finname="./data/bkg_juno_fv1.dat"):
 
 
 
-def create_asimov_dataset(enu, cum, n_evt): 
+def create_toy_dataset(enu, cum, n_evt): 
     data_uniform = np.random.uniform(low=0.0, high=1.0, size=n_evt)
-    data_asimov = [] 
+    data_toy = [] 
 
     index = 0 
     for data in data_uniform: 
@@ -139,11 +139,11 @@ def create_asimov_dataset(enu, cum, n_evt):
                 index = i 
                 break 
 
-        data_asimov.append(np.random.uniform(low=enu[index], high=enu[index+1], size=1))
+        data_toy.append(np.random.uniform(low=enu[index], high=enu[index+1], size=1))
     
-    data_asimov = np.array(data_asimov, dtype=float)
+    data_toy = np.array(data_toy, dtype=float)
 
-    return data_asimov
+    return data_toy
 
 
 
@@ -153,8 +153,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("-c", "--config", dest="config", type=str, 
                         default="config.json", help="config file")
-    parser.add_argument("-t", "--fittype", dest="fittype", type=str, 
-                        default="asimov", help="fitting type (Asimov or another data)")
     args = parser.parse_args()
     
 
@@ -232,8 +230,8 @@ if __name__ == "__main__":
         pdf_bkg_tot_ls[-1] = -1
         cum_bkg_tot_ls = np.cumsum(pdf_bkg_tot_ls) 
 
-        #asimov_set_ls = create_asimov_dataset(enu_dsnb[np.where((enu_dsnb>=enu_min_ls) & (enu_dsnb<enu_max_ls))], cum_bkg_tot_ls, int(n_bkg_tot_ls)*100)
-        asimov_set_ls = create_asimov_dataset(enu_dsnb[np.where((enu_dsnb>=enu_min_ls) & (enu_dsnb<enu_max_ls))], cum_bkg_tot_ls, int(n_bkg_tot_ls))
+        #toy_set_ls = create_toy_dataset(enu_dsnb[np.where((enu_dsnb>=enu_min_ls) & (enu_dsnb<enu_max_ls))], cum_bkg_tot_ls, int(n_bkg_tot_ls)*100)
+        toy_set_ls = create_toy_dataset(enu_dsnb[np.where((enu_dsnb>=enu_min_ls) & (enu_dsnb<enu_max_ls))], cum_bkg_tot_ls, int(n_bkg_tot_ls))
 
 
     ## save into numpy files 
@@ -246,7 +244,7 @@ if __name__ == "__main__":
                                   pdf_atmo_nu_cc_ls=pdf_atmo_nu_cc_ls, 
                                   pdf_atmo_nu_nc_11C_ls=pdf_atmo_nu_nc_11C_ls, 
                                   pdf_atmo_nu_nc_others_ls=pdf_atmo_nu_nc_others_ls)
-    np.savez("./data/arr_asimov_ls", asimov_set_ls=asimov_set_ls)
+    np.savez("./data/arr_toy_ls", toy_set_ls=toy_set_ls)
 
 
 
