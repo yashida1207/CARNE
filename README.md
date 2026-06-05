@@ -1,1 +1,7 @@
-# my-project
+# CARNE
+
+
+## License
+
+MIT License
+
